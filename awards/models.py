@@ -8,6 +8,11 @@ class Profile(models.Model):
     name = models.CharField(max_length=150,blank=True)
     profile_pic = models.ImageField(upload_to='images/',default='no-image')
 
+    @classmethod
+    def display_profile(cls):
+        profile = cls.objects.all()
+        return profile
+
 
 
 class Post(models.Model):
@@ -17,6 +22,10 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='images/')
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='post')
     pub_date = models.DateTimeField(auto_now_add=True,blank=True)
+
+    @classmethod
+    def search_post(cls,title):
+        return cls.objects.filter(title__icontains=title).all()
 
 
 class Rating(models.Model):
