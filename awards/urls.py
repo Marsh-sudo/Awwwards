@@ -7,4 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     re_path('^$',views.index,name="home"),
     re_path('^new/post$',views.new_post,name='new-post'),
+    re_path('^profile$',views.profile,name='profile'),
+    re_path('^search$',views.search_post,name='search')
 ]
