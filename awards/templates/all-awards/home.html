@@ -1,0 +1,46 @@
+{% extends 'all-awards/base.html'%}
+{% load bootstrap3%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% for post in posts%}
+<div class="container-fluid m-0 p-0 img-holder" style="background-image: url({{post.image.url}});">
+    <div class="overlay">
+        <div class="pt-3">
+            <span class="m-3 font-weight-bold" style="font-size: 20px;">Site of the Day:</span>
+        </div>
+
+        <div class="container pt-5">
+            <div class="text-center">
+                <h2>{{post.title}}</h2>
+                {% for prof in profiles%}
+                <h5 class="pt-2">By <span><a href="{%url 'profile' prof.user%}" class="link-color">{{prof.user}}</a></span></h5>
+                {%endfor%}
+            </div>
+            <a href="{{post.link}}" class="btn btn-success radius m-5">Visit Site</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<br><br>
+
+<div class="container">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 mt-4">
+            <div class="card">
+                <a href="#"><img class="card-img-top" src="{{post.image.url}}" alt="" height="250"></a>
+
+                <div class="card-body pt-5">
+                    <h6 class="card-title text-sm">{{post.title|title}}</h6>
+                </div>
+                <div class="card-footer">
+                    <h4>{{post.user.username|title}}</h4>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{% endblock %}
