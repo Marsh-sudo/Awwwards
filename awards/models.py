@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 import datetime as dt
@@ -18,8 +19,8 @@ class Profile(models.Model):
 class Post(models.Model):
     title=models.CharField(max_length=150)
     description = models.TextField(max_length=300)
-    url = models.URLField(max_length=500)
-    photo = models.ImageField(upload_to='images/')
+    link = models.URLField(max_length=500)
+    image = models.ImageField(upload_to='images/')
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='post')
     pub_date = models.DateTimeField(auto_now_add=True,blank=True)
 
@@ -51,3 +52,9 @@ class Rating(models.Model):
     content_average = models.FloatField(default=0,blank=True)
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Awards(models.Model):
+    title=models.CharField(max_length=150)
+    description = models.TextField(max_length=300)
+    link = models.URLField(max_length=500)
