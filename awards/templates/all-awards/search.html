@@ -1,0 +1,30 @@
+{%extends 'all-awards/base.html'%}
+{% load bootstrap3%}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        {%if posts%}
+        {% for post in posts %}
+        <div class="col-md-4 mt-4">
+            <div class="card">
+                <img class="card-img-top" src="{{post.image.url}}" alt="" height="250">
+                <div class="card-body pt-5">
+                    <h5>{{post.title|title}}</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="#">{{post.user}}</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%else%}
+        <div class="col-md-12 text-center">
+            <h3>Project Not Found</h3>
+        </div>
+        {%endif%}
+    </div>
+</div>
+
+{%endblock%}
