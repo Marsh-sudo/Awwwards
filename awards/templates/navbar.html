@@ -17,6 +17,15 @@
       <img src="https://raw.githubusercontent.com/xamaan585/Awwards/master/projawards/static/photos/award.png" width="60" height="60" class="d-inline-block align-top" alt="">
       Awwwards
     </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline" action=" {% url 'search' %}" enctype="multipart/form-data" role="search" aria-label="Search">
+          {% csrf_token %}
+             <input autocomplete="off" id="searching" class="form-control input-sm search" 
+              placeholder="&#xF002; search project"  style="font-family:Arial, FontAwesome" name="title">
+        </form>
   </nav>
     
 </body>
