@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap3',
+    'rest_framework',
     'crispy_forms',
     'awards.apps.AwardsConfig',
     'django.contrib.admin',
