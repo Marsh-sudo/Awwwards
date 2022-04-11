@@ -1,29 +1,11 @@
 {% extends 'all-awards/base.html'%}
+{% load static %}
 {% load bootstrap3%}
 {% load crispy_forms_tags %}
 {% block content %}
-
-{% for post in posts%}
-<div class="container-fluid m-0 p-0 img-holder" style="background-image: url({{post.image.url}});">
-    <div class="overlay">
-        <div class="pt-3">
-            <span class="m-3 font-weight-bold" style="font-size: 20px;">Site of the Day:</span>
-        </div>
-
-        <div class="container pt-5">
-            <div class="text-center">
-                <h2>{{post.title}}</h2>
-                {% for prof in profiles%}
-                <h5 class="pt-2">By <span><a href="{%url 'profile' prof.user%}" class="link-color">{{prof.user}}</a></span></h5>
-                {%endfor%}
-            </div>
-            <a href="{{post.link}}" class="btn btn-success radius m-5">Visit Site</a>
-        </div>
-        {% endfor %}
-    </div>
+<div class="container-fluid" style="background-image: url(../../static/img/bb.png); height: 50rem; background-repeat: repeat-x;">
+    <p style="text-align: center;">Awwwwards Webiste</p>
 </div>
-
-<br><br>
 
 <div class="container">
     <div class="row">
@@ -34,9 +16,12 @@
 
                 <div class="card-body pt-5">
                     <h6 class="card-title text-sm">{{post.title|title}}</h6>
+                    <h5>{{post.description}}</h5>
+                    <a href=""></a>
                 </div>
                 <div class="card-footer">
                     <h4>{{post.user.username|title}}</h4>
+                    <button type="button" class="nav_btn" onclick="window.location.href='{{post.link}}'">View site</button>
                 </div>
             </div>
         </div>
@@ -44,3 +29,4 @@
     </div>
 </div>
 {% endblock %}
+

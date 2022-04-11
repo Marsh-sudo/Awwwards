@@ -12,20 +12,44 @@
 <body>
 
 <!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="https://raw.githubusercontent.com/xamaan585/Awwards/master/projawards/static/photos/award.png" width="60" height="60" class="d-inline-block align-top" alt="">
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <a class="navbar-brand" href="{%url 'home'%}">
+      <img src="https://raw.githubusercontent.com/xamaan585/Awwards/master/projawards/static/photos/award.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
       Awwwards
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'home'%}" class="nav-link px-2 text-white">Home</a></li>
+      </ul>
+
+      <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form> -->
+      <form class="form-inline" action=" {% url 'search' %}" enctype="multipart/form-data" role="search" aria-label="Search">
+        {% csrf_token %}
+           <input autocomplete="off" id="searching" class="form-control input-sm search" 
+            placeholder="&#xF002; search project"  style="font-family:Arial, FontAwesome" name="title">
+      </form>
+
+      <div class="text-end">
+        <button type="button" onclick="window.location.href='{% url 'new-post' %}'" class="btn btn-outline-light me-2">Add Your Site</button>
+        <button type="button" onclick="window.location.href='{% url 'profile' %}'" class="btn btn-warning">Profile</button>
+      </div>
+    </div>
+  </div>
+</header>
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline" action=" {% url 'search' %}" enctype="multipart/form-data" role="search" aria-label="Search">
           {% csrf_token %}
              <input autocomplete="off" id="searching" class="form-control input-sm search" 
               placeholder="&#xF002; search project"  style="font-family:Arial, FontAwesome" name="title">
         </form>
+         -->
   </nav>
     
 </body>
