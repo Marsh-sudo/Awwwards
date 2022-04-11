@@ -11,7 +11,7 @@ from rest_framework.response import Response
 
 
 # Create your views here.
-@login_required(login_url='/accounts/register/')
+# @login_required(login_url='/accounts/register/')
 def index(request):
     posts = Post.objects.all()
     all_users = User.objects.exclude(id=request.user.id)
