@@ -11,3 +11,6 @@ urlpatterns = [
     re_path('^search$',views.search_post,name='search'),
     re_path('^api/award/$',views.AwardList.as_view())
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
