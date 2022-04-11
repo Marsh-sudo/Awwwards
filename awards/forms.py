@@ -22,6 +22,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('image','title','link','description')
+        widgets = {}
 
 
 class UpdateUserProfileForm(forms.ModelForm):
