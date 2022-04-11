@@ -19,10 +19,16 @@ class Profile(models.Model):
 class Post(models.Model):
     title=models.CharField(max_length=150)
     description = models.TextField(max_length=300)
-    link = models.URLField(max_length=500)
+    link = models.URLField(max_length=501)
     image = models.ImageField(upload_to='images/')
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='post')
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='post',blank=True)
     pub_date = models.DateTimeField(auto_now_add=True,blank=True)
+
+
+    @classmethod
+    def display(cls):
+        post = cls.objects.all()
+        return post
 
     @classmethod
     def search_post(cls,title):
@@ -52,6 +58,8 @@ class Rating(models.Model):
     content_average = models.FloatField(default=0,blank=True)
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 
 
 class Awards(models.Model):
